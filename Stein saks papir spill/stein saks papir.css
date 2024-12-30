@@ -2,6 +2,12 @@ body {
     background-color: rgb(25, 25, 25);
     color: white;
     font-family: Arial;
+    margin: 0;
+    height: 100vh; /* Full høyde av vinduet */
+    display: flex;
+    flex-direction: column; /* Sørg for at elementene stables vertikalt */
+    justify-content: center; /* Sentrer horisontalt */
+    align-items: center; /* Sentrer vertikalt */
 }
 
 .title {

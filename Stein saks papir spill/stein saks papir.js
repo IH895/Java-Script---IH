@@ -96,6 +96,8 @@
         }
 
 
+        //velger pc-en sin bevegelse, går for et random. Når det blir et visst tall, blir det enten stein saks eller papir
+
         function pickComputerMove() {
             const randomNumber = Math.random()
 
