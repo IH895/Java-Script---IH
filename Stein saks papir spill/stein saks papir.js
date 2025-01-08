@@ -12,17 +12,14 @@
         updateScoreElement();
 
 
-        /*
-        //er det samme som skjer ovenfor
-        if (!score) {
-            score = {
-                wins:0,
-                losses:0,
-                ties:0
-            };
-        }
-        */
-
+       //Reset knappen
+       document.querySelector('#resetButton').addEventListener('click',()=> {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+       });
 
 
         //pickComputerMove tar først fra dem som er nederst, som velger hva pcen skal velge ved random
