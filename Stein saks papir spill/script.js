@@ -80,7 +80,7 @@
             document.querySelector('.js-result').innerHTML = result;
 
             //viser hva du og pc-en spilte
-            document.querySelector('.js-moves').innerHTML 
+            document.querySelector('.js-moves').innerHTML
             = 'Deg <img src="bilder/'+playerMove+'-emoji.png" class="bilde-bevegelse"> <img src="bilder/'+computerMove+'-emoji.png" class="bilde-bevegelse"> PC';
         }
 
