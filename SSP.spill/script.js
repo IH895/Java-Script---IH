@@ -62,36 +62,42 @@ function playGame(playerMove) {
         }
     }
 
-    //legger til i stillingen, utifra hva det ble
-    if (result === 'Du vant') {
-        score.wins += 1;
-    } else if (result === 'Du tapte') {
-        score.losses += 1;
-    } else if (result === 'Likt') {
-        score.ties += 1;
-    }
 
-    //endrer score til en string for at det skal funke
-    localStorage.setItem('score', JSON.stringify(score));
-    updateScoreElement();
 
-       //Viser en midlertidig melding mens brukeren venter
-       document.querySelector('.js-result').innerHTML = 'Vent...'; // Midlertidig melding
-       document.querySelector('.js-moves').innerHTML = ''; // Tømmer trekkene midlertidig
-   
-       // Forsinker visningen av resultat og trekk
-       setTimeout(() => {
-           document.querySelector('.js-result').innerHTML = result; // Viser resultatet
-           document.querySelector('.js-moves').innerHTML =
-               'Deg <img src="bilder/' + playerMove + '-emoji.png" class="bilde-bevegelse"> <img src="bilder/' + computerMove + '-emoji.png" class="bilde-bevegelse"> PC'; // Viser trekkene
-       }, 2000); // 2000 millisekunder = 2 sekunder
-   }
-   
-   // Oppdaterer score-elementet
-   function updateScoreElement() {
-       document.querySelector('.js-score')
-           .innerHTML = 'Vunnet: ' + score.wins + ', Tapte: ' + score.losses + ', Likt: ' + score.ties;
-   }
+    //Viser en midlertidig melding mens brukeren venter
+    document.querySelector('.js-result').innerHTML = 'Vent...'; // Midlertidig melding
+    document.querySelector('.js-moves').innerHTML = ''; // Tømmer trekkene midlertidig
+
+    // Forsinker visningen av resultat, trekk og oppdatering av stillingen
+    setTimeout(() => {
+        // Viser resultatet
+        document.querySelector('.js-result').innerHTML = result;
+
+        // Viser trekkene
+        document.querySelector('.js-moves').innerHTML =
+            'Deg <img src="bilder/' + playerMove + '-emoji.png" class="bilde-bevegelse"> <img src="bilder/' + computerMove + '-emoji.png" class="bilde-bevegelse"> PC';
+
+        // Oppdaterer stillingen basert på resultatet
+        if (result === 'Du vant') {
+            score.wins += 1;
+        } else if (result === 'Du tapte') {
+            score.losses += 1;
+        } else if (result === 'Likt') {
+            score.ties += 1;
+        }
+
+        // Lagrer ny stilling i localStorage og oppdaterer på skjermen
+        localStorage.setItem('score', JSON.stringify(score));
+        updateScoreElement();
+    }, 2000); // 2000 millisekunder = 2 sekunder
+}
+
+// Oppdaterer score-elementet
+function updateScoreElement() {
+    document.querySelector('.js-score')
+        .innerHTML = 'Vunnet: ' + score.wins + ', Tapte: ' + score.losses + ', Likt: ' + score.ties;
+}
+
 
 //velger pc-en sin bevegelse, går for et random. Når det blir et visst tall, blir det enten stein saks eller papir
 
